@@ -5,11 +5,13 @@ const path = require('path');
 
 const app = express();
 
+// connection to MongoDB data base
 mongoose
 	.connect("mongodb+srv://seb:QiGYhNmORBWCseoT@clustercoursp6.j7rt1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true})
 	.then(() => console.log("Connexion à MongoDB réussie !"))
 	.catch(() => console.log("Connexion à MongoDB échouée !"))
 
+// access control 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -17,20 +19,14 @@ app.use((req, res, next) => {
   next();
 });
 
-//extraire l'objet JSON de la demande
+//extract JSON object from request
 app.use(bodyParser.json());
-
 
 const saucesRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 
-
 app.use('/images', express.static(path.join(__dirname, 'images')));
-
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', saucesRoutes);
-
-
-
 
 module.exports = app;
