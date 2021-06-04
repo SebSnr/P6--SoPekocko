@@ -3,6 +3,7 @@ const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const path = require("path")
 const cookieSession = require("cookie-session")
+const helmet = require("helmet")
 
 const app = express()
 
@@ -13,16 +14,18 @@ mongoose
 	.catch(() => console.log("Connexion à MongoDB échouée !"))
 
 // secure cookie http-only
-app.use(
-	cookieSession({
+app.use(cookieSession({
 		secret: "RGjMaP1K9QR4qBDOSecretKeyofCookie",
 		cookie: {
+			// maxAge : 86400000, //24h
 			secure: true,
 			httpOnly: true,
 			domain: "http://localhost:3000",
 		},
 	})
 )
+
+app.use(helmet())
 
 // access control
 app.use((req, res, next) => {
