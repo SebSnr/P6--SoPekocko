@@ -15,19 +15,19 @@ mongoose
 
 // secure cookie http-only
 app.use(cookieSession({
-		secret: "RGjMaP1K9QR4qBDOSecretKeyofCookie",
-		cookie: {
-			// maxAge : 86400000, //24h
-			secure: true,
-			httpOnly: true,
-			domain: "http://localhost:3000",
-		},
-	})
-)
+		name: "notadefaultname74513/SoPekocko",
+		secret: "Thatisasecret!",
+		maxAge: 86400000, //24h
+		secure: true,
+		httpOnly: true,
+		domain: "http://localhost:3000",
+}))
 
+// secure app by various HTTP headers (like disable cache)
 app.use(helmet())
 
-// access control
+
+// allow different access control
 app.use((req, res, next) => {
 	res.setHeader("Access-Control-Allow-Origin", "*")
 	res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization")
@@ -40,7 +40,6 @@ app.use(bodyParser.json())
 
 const saucesRoutes = require("./routes/sauce")
 const userRoutes = require("./routes/user")
-
 app.use("/images", express.static(path.join(__dirname, "images")))
 app.use("/api/auth", userRoutes)
 app.use("/api/sauces", saucesRoutes)
