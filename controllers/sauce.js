@@ -105,7 +105,7 @@ exports.likeSauce = (req, res, next) => {
 							{
 								$pull: {usersLiked: userId},
 								$inc: {likes: -1},
-								_id: sauceId,
+								id: sauceId,
 							}
 						)
 							.then(() => res.status(200).json({message: "Like retiré de la sauce !"}))
@@ -117,7 +117,7 @@ exports.likeSauce = (req, res, next) => {
 							{
 								$pull: {usersDisliked: userId},
 								$inc: {dislikes: -1},
-								_id: sauceId,
+								id: sauceId,
 							}
 						)
 							.then(() => res.status(200).json({message: "Dislike retiré de la sauce !"}))
