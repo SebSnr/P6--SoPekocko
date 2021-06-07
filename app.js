@@ -7,25 +7,30 @@ const helmet = require("helmet")
 
 const app = express()
 
+// separate sensitive connect data
+require("dotenv").config()
+;(host = process.env.HOST), (profilName = process.env.USER), (mongoConnect = process.env.MONGO_CONNECTION), (cookieName = process.env.NAME_COOKIE), (secretCookie = process.env.SECRET_COOKIE)
+
 // connection to MongoDB data base
 mongoose
-	.connect("mongodb+srv://seb:QiGYhNmORBWCseoT@clustercoursp6.j7rt1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true})
-	.then(() => console.log("Connexion à MongoDB réussie !"))
+	.connect(`${mongoConnect}`, {useNewUrlParser: true, useUnifiedTopology: true})
+	.then(() => console.log(`Connexion à MongoDB réussie avec le profil : ${profilName}!`))
 	.catch(() => console.log("Connexion à MongoDB échouée !"))
 
 // secure cookie http-only
-app.use(cookieSession({
-		name: "notadefaultname74513/SoPekocko",
-		secret: "Thatisasecret!",
+app.use(
+	cookieSession({
+		name: cookieName,
+		secret: secretCookie,
 		maxAge: 86400000, //24h
 		secure: true,
 		httpOnly: true,
-		domain: "http://localhost:3000",
-}))
+		domain: host,
+	})
+)
 
 // secure app by various HTTP headers (like disable cache)
 app.use(helmet())
-
 
 // allow different access control
 app.use((req, res, next) => {
