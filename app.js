@@ -9,7 +9,11 @@ const app = express()
 
 // separate sensitive connect data
 require("dotenv").config()
-;(host = process.env.HOST), (profilName = process.env.USER), (mongoConnect = process.env.MONGO_CONNECTION), (cookieName = process.env.NAME_COOKIE), (secretCookie = process.env.SECRET_COOKIE)
+host = process.env.HOST
+profilName = process.env.USER
+mongoConnect = process.env.MONGO_CONNECTION
+cookieName = process.env.NAME_COOKIE
+secretCookie = process.env.SECRET_COOKIE
 
 // connection to MongoDB data base
 mongoose
