@@ -8,6 +8,7 @@
 ![image](https://user-images.githubusercontent.com/78140833/121019051-5e415700-c79f-11eb-91c3-161e621d4f4e.png)
 
 🎯 L'objectif est de créer l'API de l'application "Piquante" permettant aux utilisateurs de l'application d'ajouter leurs sauces préférées et de "liker" ou "disliker" les sauces ajoutées par les autres utilisateurs.
+
  Énoncé : https://openclassrooms.com/fr/paths/185/projects/676/assignment
 
 🖥️ Lien du dépôt GitHub pour la partie frontend : https://github.com/OpenClassrooms-Student-Center/dwj-projet6
