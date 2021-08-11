@@ -1,6 +1,5 @@
 #### Projet 6 du parcours Développeur web chez OpenClassrooms
-### Construisez une API sécurisée pour une application d'avis gastronomiques
-
+### Construisez une API sécurisée
 🔨 Skills : Express / NodeJS / MongoDB / Mongoose
 
 🎓 Powerpoint détaillé de la soutenance : [SoPeckoko-soutenance.pptx](https://github.com/SebSnr/P6--SoPekocko/files/6967220/SoPeckoko-soutenance.pptx)
